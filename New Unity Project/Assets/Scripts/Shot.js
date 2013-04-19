@@ -22,3 +22,7 @@ function OnBecameInvisible() {
 	if (!original)
 		Destroy(gameObject);
 }
+function OnTriggerEnter(other : Collider) {
+	if (other.gameObject.name == "Enemy(Clone)")
+		Destroy(gameObject);
+}
