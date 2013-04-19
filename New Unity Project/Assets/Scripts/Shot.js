@@ -2,23 +2,27 @@
 var alive : boolean = false;
 var speed : float = 5;
 var original : boolean = false;
+var tempTime:float =0;
 function Start () {
 
 }
 
-function Update () {
+function Update () 
+{
 	if (!original)
 	{
-	var timeSpeed : float;
-	if (active)
+		var timeSpeed : float;
+	if (alive)
 	{
+		
 		timeSpeed = speed * Time.deltaTime;
 		transform.Translate(0,-timeSpeed,0);
 	}
 	}
 }
 
-function OnBecameInvisible() {
+function OnBecameInvisible() 
+{
 	if (!original)
 		Destroy(gameObject);
 }
