@@ -3,6 +3,7 @@ var alive : boolean = false;
 var speed : float = 5;
 var original : boolean = false;
 var tempTime:float =0;
+var playerShot:boolean = true;
 function Start () {
 
 }
@@ -16,7 +17,9 @@ function Update ()
 	{
 		
 		timeSpeed = speed * Time.deltaTime;
-		transform.Translate(0,-timeSpeed,0);
+		if (playerShot)
+		timeSpeed*=-1;
+		transform.Translate(0,timeSpeed,0);
 	}
 	}
 }
