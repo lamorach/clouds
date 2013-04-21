@@ -17,8 +17,8 @@ var translationX : float = Input.GetAxis ("Horizontal") * speed;
 var translationY : float = Input.GetAxis ("Vertical") * speed;
 translationX *= Time.deltaTime;
 translationY *= Time.deltaTime;
-rigidbody.transform.Translate(translationX,translationY,0);
-transform.Translate(translationX,translationY,0);
+rigidbody.transform.Translate(translationX,0,translationY);
+transform.Translate(translationX,0,translationY);
 prevX = translationX;
 prevY = translationY;
 

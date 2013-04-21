@@ -19,6 +19,8 @@ public class PowerUp : MonoBehaviour
 	
 	void onCollisionEnter(Collision collision)
 	{
+		print("hit");
+		
 		if(collision.gameObject.tag=="PowerUp")
 		{
 			///GameObject.Instantiate(,transform.position,bullet.transform.rotation);
