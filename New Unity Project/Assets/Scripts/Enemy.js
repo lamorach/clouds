@@ -17,11 +17,10 @@ function Update () {
 	if (currentShotCooldown <= 0)
 	{
 	currentShotCooldown += shotCooldown;
-	var newBullet = bullet;
-	newBullet.GetComponent(Shot).alive = true;
-	newBullet.GetComponent(Shot).playerShot = false;
-	GameObject.Instantiate(newBullet,transform.position,bullet.transform.rotation);
+	var newBullet =	GameObject.Instantiate(bullet,transform.position,bullet.transform.rotation);
+	newBullet.GetComponent(Shot).Initialize("Enemy Base");
 	}
+	currentShotCooldown -= Time.deltaTime;
 }
 function SetEnemy(enemyType: String )
 {

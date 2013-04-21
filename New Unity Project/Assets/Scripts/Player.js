@@ -25,12 +25,8 @@ prevY = translationY;
 if (Input.GetButton("Fire1") && cooldownTimer<=0)
 {
 	cooldownTimer=.3;
-	var newBullet = bullet;
-	newBullet.GetComponent(Shot).alive = true;
-	newBullet.GetComponent(Shot).original = false;
-	newBullet.GetComponent(Shot).speed = bullet.GetComponent(Shot).speed;
-	GameObject.Instantiate(newBullet,transform.position,bullet.transform.rotation);
-	
+	var newBullet = GameObject.Instantiate(bullet,transform.position,bullet.transform.rotation);
+	newBullet.GetComponent(Shot).Initialize("Player Base");
 }
 if(cooldownTimer>0)
 {
