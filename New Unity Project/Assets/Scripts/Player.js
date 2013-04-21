@@ -33,6 +33,7 @@ if(cooldownTimer>0)
 	cooldownTimer-=Time.deltaTime;
 	
 }
+	
 }
 
 function OnCollisionEnter (collision : Collision) 

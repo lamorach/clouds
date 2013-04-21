@@ -73,3 +73,18 @@ function SetEnemy(enemyType: String )
 		
 	}
 }
+
+function OnCollisionEnter(collision : Collision)
+{
+	if(collision.gameObject.tag=="Player")
+		{
+			rigidbody.constraints=~RigidbodyConstraints.FreezePositionX;
+			xSpeed=-1;
+			yield WaitForSeconds(.4);
+			xSpeed=1;
+			this.gameObject.collider.enabled=false;
+			rigidbody.constraints=~RigidbodyConstraints.FreezePositionY;
+			
+			
+		}
+}

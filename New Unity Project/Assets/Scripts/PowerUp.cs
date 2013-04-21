@@ -3,29 +3,29 @@ using System.Collections;
 
 public class PowerUp : MonoBehaviour 
 {
-	float spawnTimer=10;
-	public GameObject power;
-	float y=9303;
+
+	public bool original;
+	
 
 
 	// Use this for initialization
-	void Start () 
+	public void Start () 
 	{
 		
 	}
-	
+	public void Initialize()
+	{
+		original=false;
+	}
 	// Update is called once per frame
 	void Update () 
 	{
-		if(spawnTimer<=0)
+		if(!original)
 		{
-			spawnTimer=10;
-			GameObject powerUp=(GameObject)Instantiate(power,new Vector3(18464,9303,2998),power.transform.rotation);
+			float translateX =-1 * 1 * Time.deltaTime;
+			transform.Translate(translateX,0,0);
 		}
-		if(spawnTimer>0)
-		{
-			spawnTimer-=Time.deltaTime;
-		}
+		
 	}
 	
 	void OnCollisionEnter(Collision collision)
