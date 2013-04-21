@@ -1,12 +1,6 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Player.js">
-    <Files>
-      <File FileName="Assets\Scripts\Enemy.js" Line="20" Column="17" />
-      <File FileName="Assets\Scripts\Player.js" Line="11" Column="33" />
-      <File FileName="Assets\Scripts\Shot.js" Line="28" Column="19" />
-    </Files>
-  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workbench />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>
       <Breakpoint file="C:\Users\Lamorach\Documents\GitHub\clouds\New Unity Project\Assets\Scripts\Enemy.js" line="21" />
