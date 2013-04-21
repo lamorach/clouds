@@ -16,11 +16,14 @@ function Start () {
 function Update () {
 	if (currentShotCooldown <= 0)
 	{
-	currentShotCooldown += shotCooldown;
-	var newBullet =	GameObject.Instantiate(bullet,transform.position,bullet.transform.rotation);
-	newBullet.GetComponent(Shot).Initialize("Enemy Base");
+		currentShotCooldown += shotCooldown;
+		var newBullet =	GameObject.Instantiate(bullet,transform.position,bullet.transform.rotation);
+		newBullet.GetComponent(Shot).Initialize("Enemy Base");
 	}
 	currentShotCooldown -= Time.deltaTime;
+	var translateX : float =-1 * xSpeed * Time.deltaTime;
+	//TODO: set translate for the bob movement
+	transform.Translate(translateX,0,0);
 }
 function SetEnemy(enemyType: String )
 {
