@@ -9,11 +9,13 @@ private var currentShotCooldown:float = 0;
 public var xSpeed:float = 1;
 public var yRange:float = 0;
 public var ySpeed:float = 0;
+public var dead:boolean=false;
 function Start () {
 
 }
 
-function Update () {
+function Update () 
+{
 	if (currentShotCooldown <= 0)
 	{
 		currentShotCooldown += shotCooldown;
@@ -84,7 +86,16 @@ function OnCollisionEnter(collision : Collision)
 			xSpeed=1;
 			this.gameObject.collider.enabled=false;
 			rigidbody.constraints=~RigidbodyConstraints.FreezePositionY;
+			dead=true;
 			
 			
 		}
+}
+
+function OnBecameInvisible() 
+{
+	if (dead)
+	{
+		Destroy(gameObject);
+	}
 }
