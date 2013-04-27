@@ -1,10 +1,10 @@
 #pragma strict
 var bullet:GameObject;
-public var hitPoints:float = 1;
+public var hitPoints:float = 5;
 public var enemy:String = "Balloon";
 public var fire:boolean = false;
 public var shotTexture:Texture;
-public var shotCooldown:float = 3;
+public var shotCooldown:float = 0.5;
 private var currentShotCooldown:float = 0;
 public var xSpeed:float = 1;
 public var yRange:float = 0;
@@ -16,11 +16,12 @@ function Start () {
 
 function Update () 
 {
-	if (currentShotCooldown <= 0)
+	if (currentShotCooldown <= 0 && fire)
 	{
 		currentShotCooldown += shotCooldown;
 		var newBullet =	GameObject.Instantiate(bullet,transform.position,bullet.transform.rotation);
 		newBullet.GetComponent(Shot).Initialize("Enemy Base");
+		//Physics.IgnoreCollision(newBullet.collider, collider);
 	}
 	currentShotCooldown -= Time.deltaTime;
 	var translateX : float =-1 * xSpeed * Time.deltaTime;
@@ -78,8 +79,23 @@ function SetEnemy(enemyType: String )
 
 function OnCollisionEnter(collision : Collision)
 {
-	if(collision.gameObject.tag=="Player")
+var startDeath: boolean = false;
+switch (collision.gameObject.tag)
+{
+	case "Player":
+	startDeath = true;
+	break;
+	case "PlayerShot":
+	collision.gameObject.collider.enabled = false;
+	hitPoints -= collision.gameObject.GetComponent(Shot).damage;
+	if (hitPoints <= 0)
+	startDeath = true;
+	break;
+}
+
+	if(startDeath)
 		{
+		fire=false;
 			rigidbody.constraints=~RigidbodyConstraints.FreezePositionX;
 			xSpeed=-1;
 			yield WaitForSeconds(.4);

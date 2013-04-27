@@ -1,17 +1,17 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Shot.js">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Enemy.js">
     <Files>
-      <File FileName="Assets\Scripts\PowerUp.js" Line="65" Column="2" />
-      <File FileName="Assets\Scripts\Shot.js" Line="16" Column="22" />
-      <File FileName="Assets\Scripts\Player.js" Line="46" Column="11" />
-      <File FileName="Assets\Scripts\GameManager.js" Line="32" Column="1" />
-      <File FileName="Assets\Scripts\Enemy.js" Line="28" Column="1" />
+      <File FileName="Assets\Scripts\Shot.js" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\PowerUp.js" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Player.js" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Enemy.js" Line="7" Column="36" />
+      <File FileName="Assets\Scripts\GameManager.js" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>
-      <Breakpoint file="C:\Users\Lamorach\Documents\GitHub\clouds\New Unity Project\Assets\Scripts\Enemy.js" line="21" />
+      <Breakpoint file="C:\Users\Lamorach\Documents\GitHub\clouds\New Unity Project\Assets\Scripts\Player.js" line="128" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />

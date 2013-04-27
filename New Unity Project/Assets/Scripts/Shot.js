@@ -7,6 +7,7 @@ var playerShot:boolean = true;
 public static var intPowerUps: int=0;
 public static var powerStacks: int=0;
 var stacks: int=0;
+public static var damage: int=1;
 function Start () 
 {
 
@@ -54,10 +55,12 @@ function Initialize(shotType:String)
 	case "Player Base":
 		playerShot = true;
 		speed = 5;
+		tag="PlayerShot";
 	break;
 	case "Enemy Base":
 		playerShot = false;
 		speed = 5;
+		tag="EnemyShot";
 	break;
 	}
 }
@@ -68,10 +71,9 @@ function OnBecameInvisible()
 		Destroy(gameObject);
 }
 
-function OnTriggerEnter(other : Collider) 
+function OnCollisionEnter(collision : Collision) 
 {
-	if (other.gameObject.name == "Enemy(Clone)")
-		Destroy(gameObject);
+	
 }
 
 
