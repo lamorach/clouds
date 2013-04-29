@@ -18,7 +18,14 @@ var original:boolean;
 			var translateX :float =-1 * 1 * Time.deltaTime;
 			transform.Translate(translateX,0,0);
 		}
+		//cheat mode stuff
 		
+		if(Input.GetButtonDown("l"))
+		{
+			Shot.intPowerUps=2;
+			GameManager.currentPower=2;
+			Shot.powerStacks++;
+		}
 	}
 	
 	function OnCollisionEnter(collision:Collision)
@@ -61,6 +68,8 @@ var original:boolean;
 	
 	function SetPowerUp(powerPickUp: GameObject)
 	{
+		
+		
 		
 	
 	

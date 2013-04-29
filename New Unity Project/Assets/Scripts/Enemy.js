@@ -10,13 +10,32 @@ public var xSpeed:float = 1;
 public var yRange:float = 0;
 public var ySpeed:float = 0;
 public var dead:boolean=false;
-function Start () {
+public var stayPut:boolean=false;
+var justSpawned:boolean;
+public var timer:float;
+function Start () 
+{
 
 }
+function Initialize()
+	{
+		xSpeed=1;
+		justSpawned=true;
+		stayPut=false;
+		
+	}
 
 function Update () 
 {
-	if (currentShotCooldown <= 0 && fire)
+	if(!stayPut && timer<2.5)
+	{
+		timer+=Time.deltaTime;
+	}
+	if(timer>=2.5)
+	{
+		justSpawned=false;
+	}
+	if (currentShotCooldown <= 0 && fire && !justSpawned)
 	{
 		currentShotCooldown += shotCooldown;
 		var newBullet =	GameObject.Instantiate(bullet,transform.position,bullet.transform.rotation);
@@ -80,22 +99,28 @@ function SetEnemy(enemyType: String )
 function OnCollisionEnter(collision : Collision)
 {
 var startDeath: boolean = false;
-switch (collision.gameObject.tag)
+
+if(collision.gameObject.tag=="LaserPlayer")
 {
-	case "Player":
+	hitPoints-=.03;
+	if (hitPoints <= 0)
 	startDeath = true;
-	break;
-	case "PlayerShot":
+}
+else if (collision.gameObject.tag=="PlayerShot")
+{
 	collision.gameObject.collider.enabled = false;
 	hitPoints -= collision.gameObject.GetComponent(Shot).damage;
 	if (hitPoints <= 0)
 	startDeath = true;
-	break;
+}
+else if(collision.gameObject.tag=="Player")
+{
+	startDeath = true;
 }
 
 	if(startDeath)
 		{
-		fire=false;
+			fire=false;
 			rigidbody.constraints=~RigidbodyConstraints.FreezePositionX;
 			xSpeed=-1;
 			yield WaitForSeconds(.4);
@@ -110,8 +135,11 @@ switch (collision.gameObject.tag)
 
 function OnBecameInvisible() 
 {
-	if (dead)
+	if (dead || !justSpawned)
 	{
 		Destroy(gameObject);
 	}
 }
+
+
+

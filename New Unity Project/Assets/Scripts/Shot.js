@@ -62,6 +62,17 @@ function Initialize(shotType:String)
 		speed = 5;
 		tag="EnemyShot";
 	break;
+	case "LaserPlayer":
+		playerShot = true;
+		speed = 5;
+		tag="LaserPlayer";
+	break;
+	case "LaserEnemy":
+		playerShot = false;
+		speed = 5;
+		tag="LaserEnemy";
+	break;
+	
 	}
 }
 

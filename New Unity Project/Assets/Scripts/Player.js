@@ -7,6 +7,7 @@ private var prevY : float;
 private var timer=0;
 var c : CharacterController;
 var isDead: boolean = false;
+var startDeath: boolean = false;
 function Start () {
     c = GetComponent(CharacterController);
 }
@@ -44,13 +45,13 @@ function Update ()
 				if(Shot.powerStacks>1)
 				{
 					var newBeam = GameObject.Instantiate(bullet[4],transform.position,bullet[4].transform.rotation);
-					newBeam.transform.localScale= new Vector3(1.1,.8,.4);
-					newBeam.GetComponent(Shot).Initialize("Player Base");
+					newBeam.transform.localScale= new Vector3(.5,.8,.4);
+					newBeam.GetComponent(Shot).Initialize("LaserPlayer");
 				}
 				else
 				{
 					var newBeam2 = GameObject.Instantiate(bullet[4],transform.position,bullet[4].transform.rotation);
-					newBeam2.GetComponent(Shot).Initialize("Player Base");
+					newBeam2.GetComponent(Shot).Initialize("LaserPlayer");
 				}
 				
 			}//Nimbus end
@@ -115,41 +116,42 @@ function Update ()
 		}
 		
 		
+		
 		if(cooldownTimer>0)
 		{
 			cooldownTimer-=Time.deltaTime;
 			
 		}
 	}
+	Death();
+		
 }
 
 function OnCollisionEnter(collision : Collision)
 {
-var startDeath: boolean = false;
-switch (collision.gameObject.tag)
-{
-	case "Enemy":
-	startDeath = true;
-	break;
-	case "EnemyShot":
-	startDeath = true;
-	break;
-}
+	
+	if (collision.gameObject.tag=="EnemyShot" || collision.gameObject.tag=="Enemy")
+	{
+		GameManager.playerHp--;
+		if(GameManager.playerHp<=0)
+		{
+			startDeath=true;
+		}
+	}
 
+
+}	
+
+function Death()
+{
 	if(startDeath)
 		{
 			print("Player is Dead!");	
 			rigidbody.constraints=~RigidbodyConstraints.FreezePositionX;
 			yield WaitForSeconds(.4);
-			this.gameObject.collider.enabled=false;
 			rigidbody.constraints=~RigidbodyConstraints.FreezePositionY;
 			print("Player is Dead!");	
 			isDead = true;
 			
 		}
-}	
-
-function OnCollisionStay()
-{
-
 }
