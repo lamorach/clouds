@@ -1,5 +1,6 @@
 #pragma strict
-
+var mainCamera : GameObject;
+	private var topCamera : boolean;
 	var power= new GameObject[6];
 	var enemy= new GameObject[6];
 	var spawnEnemy:float=10;
@@ -17,15 +18,22 @@
 	// Update is called once per frame
 	function Update () 
 	{
+	topCamera = mainCamera.GetComponent(CameraOrbit).topViewRotate;
+
 		hp=playerHp;
 		if(spawnPowerUps<=0)
 		{
 			
-			var randomNumX: int=Random.Range(18468,18473);
-			var randomNumY: int=Random.Range(9300,9306);
+			//var randomNumX: int=Random.Range(18468,18473);
+			//var randomNumY: int=Random.Range(9300,9306);
 			var randomPower: int=Random.Range(0,6);
+			
+			var randomNumX: int=Random.Range(18468,18473);
+			var randomNumY: int=(topCamera) ? 9303.613 : Random.Range(9300,9306);
+			var randomNumZ: int=(topCamera) ? Random.Range(2993,3003) : 2998.23;
+
 			spawnPowerUps=20;
-			var powerUp =GameObject.Instantiate(power[randomPower],new Vector3(randomNumX,randomNumY,2998),power[randomPower].transform.rotation);
+			var powerUp =GameObject.Instantiate(power[randomPower],new Vector3(randomNumX,randomNumY,randomNumZ),power[randomPower].transform.rotation);
 			powerUp.GetComponent(PowerUp).Initialize();
 		}
 		
@@ -45,11 +53,15 @@
 		if(spawnEnemy<=0)
 		{
 			
-			var randomNumX: int=Random.Range(18472,18475);
-			var randomNumY: int=Random.Range(9298,9308);
+			//var randomNumX: int=Random.Range(18472,18475);
+			//var randomNumY: int=Random.Range(9298,9308);
 			var randomEnemy: int=Random.Range(0,6);
+			
+			var randomNumX: int=Random.Range(18472,18475);
+			var randomNumY: int=(topCamera) ? 9303.613 : Random.Range(9298,9308);
+			var randomNumZ: int=(topCamera) ? Random.Range(2994,3002) : 2998.23;
 			spawnEnemy=10;
-			var spawnedEnemy =GameObject.Instantiate(enemy[randomEnemy],new Vector3(randomNumX,randomNumY,2998),enemy[randomEnemy].transform.rotation);
+			var spawnedEnemy =GameObject.Instantiate(enemy[randomEnemy],new Vector3(randomNumX,randomNumY,randomNumZ),enemy[randomEnemy].transform.rotation);
 			spawnedEnemy.GetComponent(Enemy).Initialize();
 		}
 		

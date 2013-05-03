@@ -8,12 +8,17 @@ private var timer=0;
 var c : CharacterController;
 var isDead: boolean = false;
 var startDeath: boolean = false;
+var controllable : boolean = true;
+private var originalPosition : Vector3;
 function Start () {
     c = GetComponent(CharacterController);
+     originalPosition = transform.position;
 }
 
 function Update () 
 {
+if (!controllable) return;
+
 	var translationX : float = Input.GetAxis ("Horizontal") * speed;
 	var translationY : float = Input.GetAxis ("Vertical") * speed;
 	translationX *= Time.deltaTime;
@@ -154,4 +159,12 @@ function Death()
 			isDead = true;
 			
 		}
+}
+
+function PerspectiveShift(topShift : boolean) {
+	if (topShift)
+		transform.position.y = originalPosition.y;
+	else
+		transform.position.z = originalPosition.z;
+	controllable = false;
 }

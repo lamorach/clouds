@@ -13,8 +13,10 @@ public var dead:boolean=false;
 public var stayPut:boolean=false;
 var justSpawned:boolean;
 public var timer:float;
+
 function Start () 
 {
+
 
 }
 function Initialize()
@@ -27,6 +29,7 @@ function Initialize()
 
 function Update () 
 {
+
 	if(!stayPut && timer<2.5)
 	{
 		timer+=Time.deltaTime;
