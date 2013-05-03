@@ -161,7 +161,8 @@ function Death()
 		}
 }
 
-function PerspectiveShift(topShift : boolean) {
+function PerspectiveShift(topShift : boolean)
+ {
 	if (topShift)
 		transform.position.y = originalPosition.y;
 	else
