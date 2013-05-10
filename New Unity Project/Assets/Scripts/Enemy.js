@@ -1,6 +1,6 @@
 #pragma strict
 public var movementType : MovementType;
-var bullet:GameObject;
+var bullet:GameObject[];
 public var hitPoints:float = 5;
 public var enemy:String = "Balloon";
 public var fire:boolean = false;
@@ -50,8 +50,11 @@ function Update ()
 	if (currentShotCooldown <= 0 && fire && !justSpawned)
 	{
 		currentShotCooldown += shotCooldown;
-		var newBullet =	GameObject.Instantiate(bullet,transform.position,bullet.transform.rotation);
-		newBullet.GetComponent(Shot).Initialize("Enemy Base");
+		for (var i = 0; i < bullet.Length; i++)
+		{
+			var newBullet =	GameObject.Instantiate(bullet[i],transform.position,bullet[i].transform.rotation);
+			newBullet.GetComponent(Shot).Initialize("Enemy Base");
+			}
 		//Physics.IgnoreCollision(newBullet.collider, collider);
 	}
 	currentShotCooldown -= Time.deltaTime;

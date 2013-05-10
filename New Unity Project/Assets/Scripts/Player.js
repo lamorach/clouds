@@ -5,8 +5,6 @@ public static var cooldownTimer: float=1;
 private var prevX : float;
 private var prevY : float;
 private var timer=0;
-var walkingAnim : AnimationClip;
-var sheepy : GameObject;
 var c : CharacterController;
 var isDead: boolean = false;
 var startDeath: boolean = false;
@@ -23,7 +21,6 @@ if (!controllable) return;
 
 	var translationX : float = Input.GetAxis ("Horizontal") * speed;
 	var translationY : float = Input.GetAxis ("Vertical") * speed;
-	sheepy.animation.Play(walkingAnim.name);
 	translationX *= Time.deltaTime;
 	translationY *= Time.deltaTime;
 	rigidbody.transform.Translate(translationX,0,translationY);

@@ -1,6 +1,6 @@
 #pragma strict
 var mainCamera : GameObject;
-	private var topCamera : boolean;
+	var topCamera : boolean;
 	var power= new GameObject[6];
 	var enemy= new GameObject[6];
 	var spawnEnemy:float=10;
