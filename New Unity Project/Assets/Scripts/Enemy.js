@@ -1,4 +1,5 @@
 #pragma strict
+public var movementType : MovementType;
 var bullet:GameObject;
 public var hitPoints:float = 5;
 public var enemy:String = "Balloon";
@@ -12,6 +13,14 @@ public var ySpeed:float = 0;
 public var dead:boolean=false;
 public var stayPut:boolean=false;
 var justSpawned:boolean;
+private var randomTimeFactor : float; //this is for wavey movement, an offset for time so they aren't moving the same way
+enum MovementType
+{
+	Straight,
+	Wavey,
+	Diagonal,
+}
+
 public var timer:float;
 
 function Start () 
@@ -24,7 +33,7 @@ function Initialize()
 		xSpeed=1;
 		justSpawned=true;
 		stayPut=false;
-		
+		randomTimeFactor = Random.RandomRange(0, 10);
 	}
 
 function Update () 
@@ -47,8 +56,24 @@ function Update ()
 	}
 	currentShotCooldown -= Time.deltaTime;
 	var translateX : float =-1 * xSpeed * Time.deltaTime;
+	if (movementType == MovementType.Wavey)
+		Wavey();
+	else if (movementType == MovementType.Diagonal)
+		Diagonal();
 	//TODO: set translate for the bob movement
 	transform.Translate(translateX,0,0);
+}
+
+function Wavey()
+{
+// a simple sin function will control the y velocity of the wavey enemy,
+	var yChange : float = Mathf.Sin(Time.time * 2 - randomTimeFactor) * 0.05;
+	transform.Translate(0,yChange,0);
+}
+
+function Diagonal()
+{
+	transform.Translate(0,-1*xSpeed*Time.deltaTime,0);
 }
 function SetEnemy(enemyType: String )
 {
@@ -143,6 +168,5 @@ function OnBecameInvisible()
 		Destroy(gameObject);
 	}
 }
-
 
 
