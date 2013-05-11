@@ -20,6 +20,7 @@ public static var damage: int=1;
 var lifetime : float = 3.0f;
 var isVisible : boolean = false;
 
+
 //lob shot variables
 var initialYVel = 0.50f;
 var YDecay = 0.001f;

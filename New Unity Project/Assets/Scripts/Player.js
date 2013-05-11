@@ -10,6 +10,7 @@ var isDead: boolean = false;
 var startDeath: boolean = false;
 var controllable : boolean = true;
 private var originalPosition : Vector3;
+var walkingAnimation AnimationClip;
 function Start () {
     c = GetComponent(CharacterController);
      originalPosition = transform.position;
