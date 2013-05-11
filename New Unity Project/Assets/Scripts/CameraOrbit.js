@@ -19,9 +19,14 @@ private var objectY = 0.0;
 
 var rotationCount = 90.0;
 var topViewRotate = true;
+static var topCheck: boolean;
+
 @script AddComponentMenu("Camera-Control/Mouse Orbit")
  
-function Start () {
+function Start () 
+{
+
+
     var angles = transform.eulerAngles;
     x = angles.y;
     y = angles.x;
@@ -31,7 +36,13 @@ function Start () {
 		rigidbody.freezeRotation = true;
 }
  
-function LateUpdate () {
+function LateUpdate () 
+{
+	if(topViewRotate)
+	{
+		rotationObjects[0].GetComponent("Player").gameObject.transform.position.y=9303;
+	}
+
     if (target) {
     if (rotationCount <= 0) return;
     var rotationNumber = (topViewRotate) ? 0.5 : -0.5 ;
@@ -40,8 +51,8 @@ function LateUpdate () {
        y += rotationNumber;
 		
 		for (var i = 0; i < rotationObjects.Length; i++)
-		rotationObjects[i].transform.Rotate(new Vector3(rotationNumber,0,0));
- 
+		rotationObjects[i].transform.Rotate(rotationNumber,0,0,Space.World);
+ 		
  		y = ClampAngle(y, yMinLimit, yMaxLimit);
  
 		var rotation = Quaternion.Euler(y, x, 0);
@@ -75,6 +86,7 @@ static function ClampAngle (angle : float, min : float, max : float) {
 
 function PerspectiveShift()
 {
+	topCheck=topViewRotate;
 	topViewRotate = !topViewRotate;
 	rotationCount = 90;
 	rotationObjects[0].GetComponent("Player").SendMessage("PerspectiveShift", topViewRotate);

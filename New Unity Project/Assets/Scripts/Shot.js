@@ -34,7 +34,7 @@ private var player : GameObject;
 function Start () 
 {
 	gameManager = GameObject.Find("GameManager");
-	player = GameObject.Find("Player");
+	player = GameObject.Find("Sheepy");
 }
 
 function Update () 
@@ -130,9 +130,16 @@ function OnBecameVisible()
 {
 isVisible = true;
 }
+
 function OnCollisionEnter(collision : Collision) 
 {
 	
+	if((collision.gameObject.tag=="Player" || collision.gameObject.tag=="PlayerShot"|| 
+	collision.gameObject.tag=="LaserPlayer") && collider.gameObject.tag=="EnemyShot" || 
+	collider.gameObject.tag=="LaserEnemy")
+	{
+		Destroy(collider.gameObject);
+	}
 }
 
 function Homing()

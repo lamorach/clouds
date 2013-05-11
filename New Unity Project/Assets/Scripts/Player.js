@@ -10,7 +10,7 @@ var isDead: boolean = false;
 var startDeath: boolean = false;
 var controllable : boolean = true;
 private var originalPosition : Vector3;
-var walkingAnimation AnimationClip;
+var walkingAnimation: AnimationClip;
 function Start () {
     c = GetComponent(CharacterController);
      originalPosition = transform.position;
@@ -22,12 +22,21 @@ if (!controllable) return;
 
 	var translationX : float = Input.GetAxis ("Horizontal") * speed;
 	var translationY : float = Input.GetAxis ("Vertical") * speed;
+	if(Input.GetAxis("Horizontal") || Input.GetAxis ("Vertical"))
+	{
+		gameObject.animation.Play(walkingAnimation.name);
+	}
 	translationX *= Time.deltaTime;
 	translationY *= Time.deltaTime;
-	rigidbody.transform.Translate(translationX,0,translationY);
-	transform.Translate(translationX,0,translationY);
-	prevX = translationX;
-	prevY = translationY;
+
+	
+	
+		rigidbody.transform.Translate(translationX,0,translationY);
+		transform.Translate(translationX,0,translationY);
+		
+
+		prevX = translationX;
+		prevY = translationY;
 	if (!isDead)
 	{
 		if (Input.GetButton("Fire1") && cooldownTimer<=0)
@@ -150,15 +159,26 @@ function OnCollisionEnter(collision : Collision)
 
 function Death()
 {
-	if(startDeath)
-		{
+	if(startDeath && CameraOrbit.topCheck)
+		{ 
+			
 			print("Player is Dead!");	
 			rigidbody.constraints=~RigidbodyConstraints.FreezePositionX;
 			yield WaitForSeconds(.4);
 			rigidbody.constraints=~RigidbodyConstraints.FreezePositionY;
 			print("Player is Dead!");	
 			isDead = true;
+			controllable=false;
+		}
+	else if(startDeath && CameraOrbit.topCheck==false)
+		{
 			
+			
+	
+			rigidbody.constraints=RigidbodyConstraints.None;
+			print("Player is Dead!");	
+			isDead = true;
+			controllable=false;
 		}
 }
 
@@ -167,5 +187,5 @@ function PerspectiveShift(topShift : boolean) {
 		transform.position.y = originalPosition.y;
 	else
 		transform.position.z = originalPosition.z;
-	controllable = false;
+	//controllable = false;
 }

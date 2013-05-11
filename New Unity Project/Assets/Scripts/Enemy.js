@@ -149,7 +149,7 @@ else if(collision.gameObject.tag=="Player")
 	startDeath = true;
 }
 
-	if(startDeath)
+	if(startDeath && CameraOrbit.topCheck)
 		{
 			fire=false;
 			rigidbody.constraints=~RigidbodyConstraints.FreezePositionX;
@@ -161,6 +161,17 @@ else if(collision.gameObject.tag=="Player")
 			dead=true;
 			
 			
+		}
+	else if(startDeath && CameraOrbit.topCheck==false)
+		{
+			fire=false;
+			rigidbody.constraints=~RigidbodyConstraints.FreezePositionX;
+			xSpeed=-1;
+			yield WaitForSeconds(.6);
+			xSpeed=1;
+			this.gameObject.collider.enabled=false;
+			rigidbody.constraints=~RigidbodyConstraints.FreezePositionZ;
+			dead=true;
 		}
 }
 
