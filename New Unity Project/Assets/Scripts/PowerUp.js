@@ -1,5 +1,6 @@
 #pragma strict
 
+var buffAnimation: AnimationClip;
 var original:boolean;
 	// Use this for initialization
 	function Start () 
@@ -13,6 +14,14 @@ var original:boolean;
 	// Update is called once per frame
 	function Update () 
 	{
+		if(buffAnimation==null)
+		{
+		}
+		else
+		{
+			gameObject.animation.Play(buffAnimation.name);
+		}
+		
 		if(!original)
 		{
 			var translateX :float =-1 * 1 * Time.deltaTime;
@@ -118,3 +127,4 @@ var original:boolean;
 			
 	
 	}
+
