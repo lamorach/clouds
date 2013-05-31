@@ -1,6 +1,7 @@
 #pragma strict
 public var movementType : MovementType;
 var bullet:GameObject[];
+var shotTypes:String[];
 public var hitPoints:float = 5;
 public var enemy:String = "Balloon";
 public var fire:boolean = false;
@@ -70,7 +71,7 @@ function Update ()
 function Wavey()
 {
 // a simple sin function will control the y velocity of the wavey enemy,
-	var yChange : float = Mathf.Sin(Time.time * 2 - randomTimeFactor) * 0.05;
+	var yChange : float = Mathf.Sin(Time.time * 2 - randomTimeFactor) * 0.015;
 	transform.Translate(0,yChange,0);
 }
 
@@ -84,13 +85,16 @@ function SetEnemy(enemyType: String )
 	{
 		case "Balloon":
 		//Set the texture to Balloon
-		fire = false;
+		fire = true;
+		movementType = MovementType.Wavey;
+		shotTypes = ["Lob"];
 		// 
 		break;
 		case "Helicopter":
 		//Set the texture to Helicopter
 		fire = true;
 		shotCooldown = 10;
+		shotTypes= [""];
 		//Set the shot texture
 		break;
 		case "Plane":

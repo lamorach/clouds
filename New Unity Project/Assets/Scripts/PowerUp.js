@@ -19,7 +19,7 @@ var original:boolean;
 		}
 		else
 		{
-			gameObject.animation.Play(buffAnimation.name);
+		//	gameObject.animation.Play(buffAnimation.name);
 		}
 		
 		if(!original)

@@ -46,49 +46,12 @@ function Update ()
 		Destroy(gameObject);
 	lifetime -=Time.deltaTime;
 	
-stacks=powerStacks;
-
+	stacks=powerStacks;
 	if (!original)
 	{
-		var timeSpeed : float;
-		if (alive && playerShot)
-		{
-			if(intPowerUps==1)
-			{
-				timeSpeed = speed * Time.deltaTime;
-				if (playerShot)
-				timeSpeed*=-1;
-				transform.Translate(timeSpeed,0,0);
-			}
-			else
-			{
-				timeSpeed = speed * Time.deltaTime;
-				if (playerShot)
-				timeSpeed*=-1;
-				transform.Translate(0,timeSpeed,0);
-			}
-		
-		}
-		else if(alive && !playerShot)
-		{
-		if (shotType == ShotType.Homing)
-			Homing();
-		else if (shotType == ShotType.Lobbed)
-			Lob();
-		else if (shotType == ShotType.Angular)
-			Angular();
-		else if (shotType == ShotType.Orbit)
-			Orbit();
-		else //default behavior is just moving forward
-		{
-			timeSpeed = speed * Time.deltaTime;
-			if (playerShot)
-			timeSpeed*=-1;
-			transform.Translate(0,timeSpeed,0);
-		}
-
-		}
+		MoveShot();
 	}
+	
 }
 function Initialize(shotType:String)
 {
@@ -142,6 +105,47 @@ function OnCollisionEnter(collision : Collision)
 	}
 }
 
+function MoveShot()
+{	
+	var timeSpeed : float;
+	if (alive && playerShot)
+		{
+			if(intPowerUps==1)
+			{
+				timeSpeed = speed * Time.deltaTime;
+				if (playerShot)
+				timeSpeed*=-1;
+				transform.Translate(timeSpeed,0,0);
+			}
+			else
+			{
+				timeSpeed = speed * Time.deltaTime;
+				if (playerShot)
+				timeSpeed*=-1;
+				transform.Translate(0,timeSpeed,0);
+			}
+		
+		}
+		else if(alive && !playerShot)
+		{
+	
+	if (shotType == ShotType.Homing)
+			Homing();
+		else if (shotType == ShotType.Lobbed)
+			Lob();
+		else if (shotType == ShotType.Angular)
+			Angular();
+		else if (shotType == ShotType.Orbit)
+			Orbit();
+		else //default behavior is just moving forward
+		{
+			timeSpeed = speed * Time.deltaTime;
+			if (playerShot)
+			timeSpeed*=-1;
+			transform.Translate(0,timeSpeed,0);
+		}
+	}
+}
 function Homing()
 {
 			var targetPos = playerPosition;
@@ -154,11 +158,8 @@ function Homing()
 			rotateTarget.y -=5;
 			else
 			{
-		
 			rotateTarget.y -= 1;
 			}
-			
-			
 			transform.LookAt(rotateTarget);
 }
 
@@ -166,13 +167,12 @@ function Lob()
 {
 	var timeSpeed = speed * Time.deltaTime;
 	if (!cameraTopView)
-		transform.Translate(-timeSpeed,0,initialYVel);
+		transform.Translate(-timeSpeed,initialYVel,0);
 	else
 		transform.Translate(-timeSpeed,initialYVel,0);
 	initialYVel -= YDecay;
 
 }
-
 function Orbit()
 {
 			var timeSpeed = speed * Time.deltaTime;

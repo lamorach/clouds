@@ -187,5 +187,5 @@ function PerspectiveShift(topShift : boolean) {
 		transform.position.y = originalPosition.y;
 	else
 		transform.position.z = originalPosition.z;
-	//controllable = false;
+	controllable = false;
 }

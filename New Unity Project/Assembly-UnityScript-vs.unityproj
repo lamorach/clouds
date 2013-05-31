@@ -44,10 +44,12 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Scripts\BackgroundProp.js" />
      <Compile Include="Assets\Scripts\CameraOrbit.js" />
      <Compile Include="Assets\Scripts\Enemy.js" />
      <Compile Include="Assets\Scripts\GameManager.js" />
-     <Compile Include="Assets\Scripts\PerspectiveShift.js" />
+     <Compile Include="Assets\Scripts\Level.js" />
+     <Compile Include="Assets\Scripts\Menu.js" />
      <Compile Include="Assets\Scripts\Player.js" />
      <Compile Include="Assets\Scripts\PowerUp.js" />
      <Compile Include="Assets\Scripts\Sheepy Animate.js" />
