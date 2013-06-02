@@ -54,6 +54,8 @@
      <Compile Include="Assets\Scripts\PowerUp.js" />
      <Compile Include="Assets\Scripts\Sheepy Animate.js" />
      <Compile Include="Assets\Scripts\Shot.js" />
+     <Compile Include="Assets\Scripts\TheButton.js" />
+     <Compile Include="Assets\Scripts\TxtGui.js" />
      <None Include="Assets\Standard Assets\Particles\Sources\Shaders\Particle Alpha Blend (Queue +100).shader" />
      <None Include="Assets\Standard Assets\Water (Basic)\Sources\Shaders\FX-Water Simple.shader" />
   </ItemGroup>

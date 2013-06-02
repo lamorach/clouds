@@ -1,11 +1,12 @@
 #pragma strict
-var mainCamera : GameObject;
+	var mainCamera : GameObject;
 	var topCamera : boolean;
 	var power= new GameObject[6];
 	var enemy= new GameObject[6];
 	var spawnEnemy:float=10;
 	var spawnPowerUps:float=20;
 	var changePerspectiveTimer:float= 100;
+	static var isPaused=true;
 	public static var bossArea:boolean= false;
 	public static var notInvin:boolean=false;
 	public static var playerHp=8;
@@ -14,11 +15,13 @@ var mainCamera : GameObject;
 	// Use this for initialization
 	function Start () 
 	{
-	
+		
 	}
 	
 	// Update is called once per frame
 	function Update () 
+	{
+	if(!isPaused)
 	{
 		hp=playerHp;
 		
@@ -42,6 +45,8 @@ var mainCamera : GameObject;
 		ShiftPerspective();
 	}
 	changePerspectiveTimer-=Time.deltaTime;
+	
+	}
 	}
 	
 	function SpawnPowerUp(){
@@ -53,6 +58,7 @@ var mainCamera : GameObject;
 	spawnPowerUps=20;
 	var powerUp =GameObject.Instantiate(power[randomPower],new Vector3(randomNumX,randomNumY,2998.23),power[randomPower].transform.rotation);
 	powerUp.GetComponent(PowerUp).Initialize();
+	
 }
 	
 function SpawnEnemy(){

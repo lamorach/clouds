@@ -39,7 +39,8 @@ function Initialize()
 
 function Update () 
 {
-
+if(GameManager.isPaused==false)
+{
 	if(!stayPut && timer<2.5)
 	{
 		timer+=Time.deltaTime;
@@ -66,6 +67,7 @@ function Update ()
 		Diagonal();
 	//TODO: set translate for the bob movement
 	transform.Translate(translateX,0,0);
+	}
 }
 
 function Wavey()

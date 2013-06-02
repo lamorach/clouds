@@ -18,6 +18,8 @@ function Start () {
 
 function Update () 
 {
+if(GameManager.isPaused==false)
+{
 if (!controllable) return;
 
 	var translationX : float = Input.GetAxis ("Horizontal") * speed;
@@ -139,6 +141,7 @@ if (!controllable) return;
 		}
 	}
 	Death();
+}
 		
 }
 

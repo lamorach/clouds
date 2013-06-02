@@ -39,6 +39,8 @@ function Start ()
 
 function Update () 
 {
+if(GameManager.isPaused==false)
+{
 	cameraTopView = gameManager.GetComponent(GameManager).topCamera;
 	playerPosition = player.transform.position;
 	if (!isVisible) return;
@@ -51,6 +53,7 @@ function Update ()
 	{
 		MoveShot();
 	}
+}
 	
 }
 function Initialize(shotType:String)

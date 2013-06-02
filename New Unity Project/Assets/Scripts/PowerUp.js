@@ -14,6 +14,8 @@ var original:boolean;
 	// Update is called once per frame
 	function Update () 
 	{
+	if(GameManager.isPaused==false)
+	{
 		if(buffAnimation==null)
 		{
 		}
@@ -35,6 +37,7 @@ var original:boolean;
 			GameManager.currentPower=2;
 			Shot.powerStacks++;
 		}
+	}
 	}
 	
 	function OnCollisionEnter(collision:Collision)
