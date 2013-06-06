@@ -26,7 +26,7 @@ if (!controllable) return;
 	var translationY : float = Input.GetAxis ("Vertical") * speed;
 	if(Input.GetAxis("Horizontal") || Input.GetAxis ("Vertical"))
 	{
-		gameObject.animation.Play(walkingAnimation.name);
+//		gameObject.animation.Play(walkingAnimation.name);
 	}
 	translationX *= Time.deltaTime;
 	translationY *= Time.deltaTime;

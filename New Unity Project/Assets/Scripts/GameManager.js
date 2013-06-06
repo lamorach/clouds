@@ -3,8 +3,10 @@
 	var topCamera : boolean;
 	var power= new GameObject[6];
 	var enemy= new GameObject[6];
+	var bgCloud : GameObject;
 	var spawnEnemy:float=10;
 	var spawnPowerUps:float=20;
+	var spawnCloud:float=2;
 	var changePerspectiveTimer:float= 100;
 	static var isPaused=true;
 	public static var bossArea:boolean= false;
@@ -21,32 +23,40 @@
 	// Update is called once per frame
 	function Update () 
 	{
-	if(!isPaused)
-	{
-		hp=playerHp;
+		if(!isPaused)
+		{
+			hp=playerHp;
 		
-	topCamera = mainCamera.GetComponent(CameraOrbit).topViewRotate;
-	if(spawnPowerUps<=0)
-	{
-		SpawnPowerUp();
+			topCamera = mainCamera.GetComponent(CameraOrbit).topViewRotate;
+			if(spawnPowerUps<=0)
+			{
+				SpawnPowerUp();
 		
-	}
-	spawnPowerUps-=Time.deltaTime;
-	if (bossArea)
-		return;
-	if(spawnEnemy<=0)
-	{
-		SpawnEnemy();
-	}
-	spawnEnemy-=Time.deltaTime;
-	
-	if (changePerspectiveTimer<=0)
-	{
-		ShiftPerspective();
-	}
-	changePerspectiveTimer-=Time.deltaTime;
-	
-	}
+			}
+			spawnPowerUps-=Time.deltaTime;
+			
+			if(spawnCloud<=0)
+			{
+				SpawnCloud();
+		
+			}
+			spawnCloud-=Time.deltaTime;
+			
+			if (bossArea)
+				return;
+			if(spawnEnemy<=0)
+			{
+				SpawnEnemy();
+			}
+			spawnEnemy-=Time.deltaTime;
+			
+			if (changePerspectiveTimer<=0)
+			{
+				ShiftPerspective();
+			}
+			changePerspectiveTimer-=Time.deltaTime;
+			
+		}
 	}
 	
 	function SpawnPowerUp(){
@@ -60,6 +70,17 @@
 	powerUp.GetComponent(PowerUp).Initialize();
 	
 }
+	function SpawnCloud()
+	{
+	var randomCount: int=Random.Range(1,3);
+	var randomNumX: int=Random.Range(18500,18505);
+	var randomNumY: int=(topCamera) ? 9303.613 : Random.Range(9300,9306);
+	//var randomNumZ:  nt=(topCamera) ? Random.Range(2993,3003) : 2998.23;
+
+	spawnCloud=Random.Range(.01,1);
+	var bgCloud =GameObject.Instantiate(bgCloud,new Vector3(randomNumX,randomNumY,3000),bgCloud.transform.rotation);
+	bgCloud.GetComponent(BackgroundProp).Initialize();
+	}
 	
 function SpawnEnemy(){
 	var randomEnemy: int=Random.Range(0,6);
