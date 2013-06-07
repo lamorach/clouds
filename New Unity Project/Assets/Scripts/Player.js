@@ -26,7 +26,7 @@ if (!controllable) return;
 	var translationY : float = Input.GetAxis ("Vertical") * speed;
 	if(Input.GetAxis("Horizontal") || Input.GetAxis ("Vertical"))
 	{
-//		gameObject.animation.Play(walkingAnimation.name);
+		gameObject.animation.Play(walkingAnimation.name);
 	}
 	translationX *= Time.deltaTime;
 	translationY *= Time.deltaTime;
@@ -47,14 +47,14 @@ if (!controllable) return;
 			{
 				cooldownTimer=.4;
 				var newBullet = GameObject.Instantiate(bullet[0],transform.position,bullet[0].transform.rotation);
-				newBullet.GetComponent(Shot).Initialize("Player Base");
+				newBullet.GetComponent(Shot).Initialize("SmokeBall");
 			}
 			
 			if(Shot.intPowerUps==1)//Lenzo
 			{
 				cooldownTimer=.5;
 				var newTwister = GameObject.Instantiate(bullet[3],transform.position,bullet[3].transform.rotation);
-				newTwister.GetComponent(Shot).Initialize("Player Base");
+				newTwister.GetComponent(Shot).Initialize("SmokeBall");
 			}//Lenzo end
 			
 			if(Shot.intPowerUps==2)//Nimbus
@@ -85,7 +85,7 @@ if (!controllable) return;
 				}
 				
 				var newFog = GameObject.Instantiate(bullet[2],transform.position,bullet[2].transform.rotation);
-				newFog.GetComponent(Shot).Initialize("Player Base");
+				newFog.GetComponent(Shot).Initialize("SmokeBall");
 			}//Ghost end
 			
 			
@@ -112,19 +112,19 @@ if (!controllable) return;
 				}
 				
 				var newAcid = GameObject.Instantiate(bullet[1],transform.position,bullet[1].transform.rotation);
-				newAcid.GetComponent(Shot).Initialize("Player Base");
+				newAcid.GetComponent(Shot).Initialize("SmokeBall");
 			}//Nuvem end
 			
 			if(Shot.intPowerUps==6)//wolk power
 			{
 				cooldownTimer=.4;
 				var newBullet2 = GameObject.Instantiate(bullet[0],new Vector3(transform.position.x, transform.position.y-1,transform.position.z),bullet[0].transform.rotation);
-				newBullet2.GetComponent(Shot).Initialize("Player Base");
+				newBullet2.GetComponent(Shot).Initialize("SmokeBall");
 				if(Shot.powerStacks>1)
 				{
 					cooldownTimer=.4;
 					var newBullet3 = GameObject.Instantiate(bullet[0],new Vector3(transform.position.x, transform.position.y-2,transform.position.z),bullet[0].transform.rotation);
-					newBullet3.GetComponent(Shot).Initialize("Player Base");
+					newBullet3.GetComponent(Shot).Initialize("SmokeBall");
 				}
 			}///wolk end
 			

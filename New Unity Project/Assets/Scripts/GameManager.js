@@ -77,7 +77,7 @@
 	var randomNumY: int=(topCamera) ? 9303.613 : Random.Range(9300,9306);
 	//var randomNumZ:  nt=(topCamera) ? Random.Range(2993,3003) : 2998.23;
 
-	spawnCloud=Random.Range(.01,1);
+	spawnCloud=Random.Range(2,4);
 	var bgCloud =GameObject.Instantiate(bgCloud,new Vector3(randomNumX,randomNumY,3000),bgCloud.transform.rotation);
 	bgCloud.GetComponent(BackgroundProp).Initialize();
 	}

@@ -9,7 +9,7 @@ function Update()
 	{
 		if (!original)
 		{
-		transform.Translate(new Vector3(.5,0,0));
+		transform.Translate(new Vector3(.1,0,0));
 		}
 	}
 }

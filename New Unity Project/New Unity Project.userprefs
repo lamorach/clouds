@@ -1,14 +1,16 @@
 ﻿<Properties GitUserInfo="UsingGIT">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\BackgroundProp.js">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Player.js">
     <Files>
-      <File FileName="Assets\Scripts\Player.js" Line="29" Column="3" />
-      <File FileName="Assets\Scripts\Enemy.js" Line="183" Column="1" />
-      <File FileName="Assets\Scripts\GameManager.js" Line="76" Column="44" />
-      <File FileName="Assets\Scripts\PowerUp.js" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Shot.js" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Player.js" Line="50" Column="56" />
+      <File FileName="Assets\Scripts\Enemy.js" Line="42" Column="1" />
+      <File FileName="Assets\Scripts\GameManager.js" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\PowerUp.js" Line="24" Column="30" />
+      <File FileName="Assets\Scripts\Shot.js" Line="72" Column="11" />
       <File FileName="Assets\Scripts\CameraOrbit.js" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\BackgroundProp.js" Line="12" Column="37" />
+      <File FileName="Assets\Scripts\BackgroundProp.js" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Level.js" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\BomberBoss.js" Line="129" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

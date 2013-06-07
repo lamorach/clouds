@@ -62,6 +62,11 @@ function Initialize(shotType:String)
 	original = false;
 	switch(shotType)
 	{
+	case "SmokeBall":
+	playerShot = true;
+		speed = -5;
+		tag="PlayerShot";
+	break;
 	case "Player Base":
 		playerShot = true;
 		speed = 5;
